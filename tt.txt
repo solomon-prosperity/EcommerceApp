@@ -1,0 +1,12 @@
+{
+    "name": "Hauwei" ,
+    "id": "5" ,
+    "image": "https.:/yehejjwu" ,
+    "desc": "this is a fuckshit phone" ,
+    "price": "280k"
+
+}
+if (newProduct.id === products.id) {
+        newProduct.id = products.length + 1;
+        products.push(newProduct)
+    }
