@@ -16,7 +16,7 @@ app.post('/api/products', (req, res) => {
         .json({ success: false, msg: 'please provide the name , description, image ,  and price of the product' })
     }
 
-    const newProduct = { id : products.length + 1 , name: name, desc: desc, image: image, price: price}
+    const newProduct = { id : products.length + 1  , name: name, desc: desc, image: image, price: price}
     products.push(newProduct);
     res.status(200).json({ success: true, data: products})  
 })
@@ -34,7 +34,7 @@ app.put('/api/products/:id', (req, res) => {
     }
     const newProducts = products.map((product) => {
       if (product.id === Number(id)) {
-        product.id = id
+        product.id = Number(id)
         product.name = name
         product.desc = desc
         product.image = image
@@ -46,16 +46,18 @@ app.put('/api/products/:id', (req, res) => {
   })
   
   app.delete('/api/products/:id', (req, res) => {
-    const product = products.find((product) => product.id === Number(req.params.id))
+      const {id} = req.params
+    const product = products.find((product) => product.id === Number(id))
     if (!product) {
       return res
         .status(404)
-        .json({ success: false, msg: `no product with id ${req.params.id}` })
+        .json({ success: false, msg: `no product with id ${id}` })
     }
     const newProduct = products.filter(
-      (product) => product.id !== Number(req.params.id)
+      (product) => product.id !== Number(id)
     )
     return res.status(200).json({ success: true, data: newProduct })
+    
   })
   
 
