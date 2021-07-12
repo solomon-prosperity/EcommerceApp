@@ -16,7 +16,7 @@ app.post('/api/products', (req, res) => {
         .json({ success: false, msg: 'please provide the name , description, image ,  and price of the product' })
     }
 
-    const newProduct = { id : products.length + 1  , name: name, desc: desc, image: image, price: price}
+    const newProduct = { id : products.length + 1  , ...req.body}
     products.push(newProduct);
     res.status(200).json({ success: true, data: products})  
 })
