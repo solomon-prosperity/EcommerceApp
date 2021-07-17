@@ -33,4 +33,4 @@ const products = [
     },
   ]
 
-  module.exports = {products}
+  module.exports = products
