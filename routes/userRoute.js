@@ -10,7 +10,8 @@ const {
 
 
 
-router.route('/').get(getUsers).post(signUp)
-router.post('/login' , signIn)
+router.route('/').get(getUsers)
+router.route('/signup').post(signUp)
+router.post('/signin' , signIn)
 
 module.exports = router
